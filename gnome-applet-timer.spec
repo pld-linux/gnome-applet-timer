@@ -1,11 +1,11 @@
 Summary:	Timer Applet - a countdown timer applet for the GNOME panel
 Summary(pl):	Timer Applet - aplet zegarka odliczajacego zadany czas dla panelu GNOME
-Name:		timer-applet
+Name:		gnome-applet-timer
 Version:	1.0
 Release:	0.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/timerapplet/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/timerapplet/timer-applet-%{version}.tar.gz
 # Source0-md5:	63b40b8ae59e12d2f7068ebf64fffd86
 URL:		http://timerapplet.sourceforge.net/
 BuildRequires:	gnome-panel-devel >= 2.6
@@ -39,7 +39,7 @@ Mo¿liwo¶ci:
 - interfejs u¿ytkownika zgodny z GNOME HIG
 
 %prep
-%setup -q
+%setup -q -n timer-applet-%{version}
 
 %build
 %configure
@@ -51,23 +51,22 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name} --with-gnome
+%find_lang timer-applet --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install %{name}.schemas
+%gconf_schema_install timer-applet.schemas
 
 %preun
-%gconf_schema_uninstall %{name}.schemas
+%gconf_schema_uninstall timer-applet.schemas
 
-%files -f %{name}.lang
+%files -f timer-applet.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/gconf/schemas/%{name}.schemas
+%{_sysconfdir}/gconf/schemas/timer-applet.schemas
 %{_libdir}/bonobo/servers/GNOME_TimerApplet.server
 %{_datadir}/gnome-2.0/ui/GNOME_TimerApplet.xml
-%{_pixmapsdir}/%{name}
-%{_datadir}/gnome/help/%{name}
+%{_pixmapsdir}/timer-applet
