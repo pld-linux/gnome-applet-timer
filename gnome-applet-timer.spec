@@ -1,18 +1,23 @@
+%define		_realname	timer-applet
 Summary:	Timer Applet - a countdown timer applet for the GNOME panel
 Summary(pl):	Timer Applet - aplet zegarka odliczajacego zadany czas dla panelu GNOME
 Name:		gnome-applet-timer
 Version:	1.0
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/timerapplet/timer-applet-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/timerapplet/%{_realname}-%{version}.tar.gz
 # Source0-md5:	63b40b8ae59e12d2f7068ebf64fffd86
 URL:		http://timerapplet.sourceforge.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gnome-panel-devel >= 2.6
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	gnome-panel >= 2.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_sysconfdir	/etc/gconf
 
 %description
 Highlights:
@@ -39,10 +44,14 @@ Mo¿liwo¶ci:
 - interfejs u¿ytkownika zgodny z GNOME HIG
 
 %prep
-%setup -q -n timer-applet-%{version}
+%setup -q -n %{_realname}-%{version}
 
 %build
-%configure
+%{__aclocal}
+%{__autoconf}
+%{__automake}
+%configure \
+	--with-gconf-schema-file-dir=%{_sysconfdir}/schemas
 %{__make}
 
 %install
@@ -51,22 +60,22 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang timer-applet --with-gnome
+%find_lang %{_realname} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install timer-applet.schemas
+%gconf_schema_install %{_realname}.schemas
 
 %preun
-%gconf_schema_uninstall timer-applet.schemas
+%gconf_schema_uninstall %{_realname}.schemas
 
-%files -f timer-applet.lang
+%files -f %{_realname}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/gconf/schemas/timer-applet.schemas
+%{_sysconfdir}/gconf/schemas/%{_realname}.schemas
 %{_libdir}/bonobo/servers/GNOME_TimerApplet.server
 %{_datadir}/gnome-2.0/ui/GNOME_TimerApplet.xml
-%{_pixmapsdir}/timer-applet
+%{_pixmapsdir}/%{_realname}
