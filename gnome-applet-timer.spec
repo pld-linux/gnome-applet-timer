@@ -1,9 +1,11 @@
+# TODO:
+# - polish translation to application
 %define		_realname	timer-applet
 Summary:	Timer Applet - a countdown timer applet for the GNOME panel
 Summary(pl):	Timer Applet - aplet zegarka odliczajacego zadany czas dla panelu GNOME
 Name:		gnome-applet-timer
 Version:	1.0
-Release:	0.2
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/timerapplet/%{_realname}-%{version}.tar.gz
