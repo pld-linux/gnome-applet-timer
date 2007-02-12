@@ -1,6 +1,6 @@
 %define		_realname	timer-applet
 Summary:	Timer Applet - a countdown timer applet for the GNOME panel
-Summary(pl):	Timer Applet - aplet zegarka odliczajacego zadany czas dla panelu GNOME
+Summary(pl.UTF-8):   Timer Applet - aplet zegarka odliczajacego zadany czas dla panelu GNOME
 Name:		gnome-applet-timer
 Version:	1.3.1
 Release:	1
@@ -31,17 +31,17 @@ Highlights:
    mouse over the timer icon
  - User interface follows the GNOME Human Interface Guidelines
 
-%description -l pl
-Mo¿liwo¶ci:
- - dodawanie do panelu wielu apletów zegarka w celu uruchamiania ich
-   jednocze¶nie
- - szybkie ustawianie czasu, po którym aplet ma powiadomiæ
- - tworzenie predefiniowanych ustawieñ dla czêsto u¿ywanych czasów
- - ma³y i nienatarczywy: mo¿na wybraæ miêdzy widokiem pozosta³ego
-   czasu w panelu albo ukryæ go, aby nie byæ rozpraszanym widokiem
-   mijanego czasu; pozosta³y czas mo¿na podejrzeæ zatrzymuj±c kursor
-   myszy nad ikon± zegarka
-- interfejs u¿ytkownika zgodny z GNOME HIG
+%description -l pl.UTF-8
+MoÅ¼liwoÅ›ci:
+ - dodawanie do panelu wielu apletÃ³w zegarka w celu uruchamiania ich
+   jednoczeÅ›nie
+ - szybkie ustawianie czasu, po ktÃ³rym aplet ma powiadomiÄ‡
+ - tworzenie predefiniowanych ustawieÅ„ dla czÄ™sto uÅ¼ywanych czasÃ³w
+ - maÅ‚y i nienatarczywy: moÅ¼na wybraÄ‡ miÄ™dzy widokiem pozostaÅ‚ego
+   czasu w panelu albo ukryÄ‡ go, aby nie byÄ‡ rozpraszanym widokiem
+   mijanego czasu; pozostaÅ‚y czas moÅ¼na podejrzeÄ‡ zatrzymujÄ…c kursor
+   myszy nad ikonÄ… zegarka
+- interfejs uÅ¼ytkownika zgodny z GNOME HIG
 
 %prep
 %setup -q -n %{_realname}-%{version}
