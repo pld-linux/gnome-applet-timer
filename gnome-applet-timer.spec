@@ -1,6 +1,6 @@
 %define		_realname	timer-applet
 Summary:	Timer Applet - a countdown timer applet for the GNOME panel
-Summary(pl.UTF-8):   Timer Applet - aplet zegarka odliczajacego zadany czas dla panelu GNOME
+Summary(pl.UTF-8):	Timer Applet - aplet zegarka odliczajacego zadany czas dla panelu GNOME
 Name:		gnome-applet-timer
 Version:	1.3.1
 Release:	1
