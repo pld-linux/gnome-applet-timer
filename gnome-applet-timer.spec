@@ -13,8 +13,8 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-panel-devel >= 2.6
 BuildRequires:	pkgconfig
-%pyrequires_eq  python-modules
-%pyrequires_eq  python
+%pyrequires_eq	python-modules
+%pyrequires_eq	python
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	gnome-panel >= 2.6
 Requires:	python-dbus >= 0.80.2
@@ -45,7 +45,7 @@ Możliwości:
    czasu w panelu albo ukryć go, aby nie być rozpraszanym widokiem
    mijanego czasu; pozostały czas można podejrzeć zatrzymując kursor
    myszy nad ikoną zegarka
-- interfejs użytkownika zgodny z GNOME HIG
+ - interfejs użytkownika zgodny z GNOME HIG
 
 %prep
 %setup -q -n %{_realname}-%{version}
