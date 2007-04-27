@@ -1,20 +1,24 @@
 %define		_realname	timer-applet
 Summary:	Timer Applet - a countdown timer applet for the GNOME panel
-Summary(pl.UTF-8):	Timer Applet - aplet zegarka odliczajacego zadany czas dla panelu GNOME
+Summary(pl.UTF-8):	Timer Applet - aplet zegarka odliczającego zadany czas dla panelu GNOME
 Name:		gnome-applet-timer
-Version:	1.3.1
-Release:	1
+Version:	2.0.0
+Release:	0.1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/timerapplet/%{_realname}-%{version}.tar.gz
-# Source0-md5:	6c7f36c41bd8d7a86c055bfdf42f1493
+# Source0-md5:	212b2506649fdad36b62dfe3d2524d26
 URL:		http://timerapplet.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-panel-devel >= 2.6
 BuildRequires:	pkgconfig
+%pyrequires_eq  python-modules
+%pyrequires_eq  python
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	gnome-panel >= 2.6
+Requires:	python-dbus >= 0.80.2
+Requires:	python-pynotify
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc/gconf
@@ -51,6 +55,7 @@ Możliwości:
 %{__autoconf}
 %{__automake}
 %configure \
+	--disable-schemas-install \
 	--with-gconf-schema-file-dir=%{_sysconfdir}/schemas
 %{__make}
 
@@ -74,8 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{_realname}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/timer-applet
+%attr(755,root,root) %{_libdir}/%{_realname}
 %{_sysconfdir}/schemas/%{_realname}.schemas
-%{_libdir}/bonobo/servers/GNOME_TimerApplet.server
-%{_datadir}/gnome-2.0/ui/GNOME_TimerApplet.xml
-%{_pixmapsdir}/%{_realname}
+%{_libdir}/bonobo/servers/TimerApplet.server
+%{_datadir}/%{_realname}
+%{_pixmapsdir}/%{_realname}.png
+%{py_sitescriptdir}/timerapplet
