@@ -2,12 +2,12 @@
 Summary:	Timer Applet - a countdown timer applet for the GNOME panel
 Summary(pl.UTF-8):	Timer Applet - aplet zegarka odliczającego zadany czas dla panelu GNOME
 Name:		gnome-applet-timer
-Version:	2.0.0
-Release:	0.1
+Version:	2.0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/timerapplet/%{_realname}-%{version}.tar.gz
-# Source0-md5:	212b2506649fdad36b62dfe3d2524d26
+# Source0-md5:	c56e5ec73ece83389e05a51aa38e0d59
 URL:		http://timerapplet.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -65,6 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%py_postclean
 %find_lang %{_realname} --with-gnome
 
 %clean
