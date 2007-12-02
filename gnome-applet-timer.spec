@@ -1,4 +1,4 @@
-%define		_realname	timer-applet
+%define		realname	timer-applet
 Summary:	Timer Applet - a countdown timer applet for the GNOME panel
 Summary(pl.UTF-8):	Timer Applet - aplet zegarka odliczającego zadany czas dla panelu GNOME
 Name:		gnome-applet-timer
@@ -6,16 +6,17 @@ Version:	2.0.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/timerapplet/%{_realname}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/timerapplet/%{realname}-%{version}.tar.gz
 # Source0-md5:	c56e5ec73ece83389e05a51aa38e0d59
 URL:		http://timerapplet.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-panel-devel >= 2.6
+BuildRequires:	intltool
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.197
 %pyrequires_eq	python-modules
 %pyrequires_eq	python
-BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	gnome-panel >= 2.6
 Requires:	python-dbus >= 0.80.2
 Requires:	python-pynotify
@@ -48,7 +49,7 @@ Możliwości:
  - interfejs użytkownika zgodny z GNOME HIG
 
 %prep
-%setup -q -n %{_realname}-%{version}
+%setup -q -n %{realname}-%{version}
 
 %build
 %{__intltoolize}
@@ -67,23 +68,23 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %py_postclean
-%find_lang %{_realname} --with-gnome
+%find_lang %{realname} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install %{_realname}.schemas
+%gconf_schema_install %{realname}.schemas
 
 %preun
-%gconf_schema_uninstall %{_realname}.schemas
+%gconf_schema_uninstall %{realname}.schemas
 
-%files -f %{_realname}.lang
+%files -f %{realname}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/%{_realname}
-%{_sysconfdir}/schemas/%{_realname}.schemas
+%attr(755,root,root) %{_libdir}/%{realname}
+%{_sysconfdir}/schemas/%{realname}.schemas
 %{_libdir}/bonobo/servers/TimerApplet.server
-%{_datadir}/%{_realname}
-%{_pixmapsdir}/%{_realname}.png
+%{_datadir}/%{realname}
+%{_pixmapsdir}/%{realname}.png
 %{py_sitescriptdir}/timerapplet
