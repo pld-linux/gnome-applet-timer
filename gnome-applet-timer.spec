@@ -51,6 +51,7 @@ Możliwości:
 %setup -q -n %{_realname}-%{version}
 
 %build
+%{__intltoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
