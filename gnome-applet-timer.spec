@@ -11,7 +11,7 @@ Source0:	http://dl.sourceforge.net/timerapplet/%{realname}-%{version}.tar.gz
 URL:		http://timerapplet.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gnome-panel-devel >= 2.6
 BuildRequires:	intltool
 BuildRequires:	pkgconfig
